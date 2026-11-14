@@ -540,7 +540,7 @@ body.secret-mode .masthead {
 }
 
 .anole-progress-fill {
-    width: 72%;
+    width: 86%;
     height: 100%;
     background: var(--orange);
     transition: width 0.3s ease;
