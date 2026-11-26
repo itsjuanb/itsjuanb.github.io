@@ -1010,3 +1010,22 @@ body.terminal-panic {
         animation: none;
     }
 }
+
+@view-transition {
+    navigation: auto;
+}
+
+::view-transition-old(root) {
+    animation: 160ms ease-in both pageExit;
+}
+
+::view-transition-new(root) {
+    animation: 260ms ease-out both pageEnter;
+}
+
+@keyframes pageExit {
+    to {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+}
