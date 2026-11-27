@@ -349,7 +349,14 @@ document.addEventListener("keydown", event => {
 });
 
 
-
+if (backToTop) {
+    backToTop.addEventListener("click", () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+}
 
 
 /* terminal */
@@ -568,4 +575,18 @@ document.addEventListener("keydown", event => {
         stopSecretMode();
     }
 });
+// im age ca rs d s
+document.querySelectorAll(".interest-card-toggle").forEach((button) => {
+    const panelId = button.getAttribute("aria-controls");
+    const panel = document.getElementById(panelId);
 
+    if (!panel) return;
+
+    button.addEventListener("click", () => {
+        const isExpanded =
+            button.getAttribute("aria-expanded") === "true";
+
+        button.setAttribute("aria-expanded", String(!isExpanded));
+        panel.hidden = isExpanded;
+    });
+});

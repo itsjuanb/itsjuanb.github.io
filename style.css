@@ -1010,7 +1010,192 @@ body.terminal-panic {
         animation: none;
     }
 }
+/* IMAGE-FIRST INTEREST CARDS */
+.interest-card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+    align-items: start;
+}
 
+.lore-item.interest-card {
+    display: block;
+    min-width: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #fff4dc;
+    border: 3px solid #19130e;
+    box-shadow: 6px 6px 0 #ff7900;
+    transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.interest-card-toggle {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    color: #19130e;
+    background: transparent;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.interest-card-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    background: #ffe66d;
+    border-bottom: 3px solid #19130e;
+    transition: filter 180ms ease;
+}
+
+.interest-card-heading {
+    display: block;
+    padding: 14px 15px 5px;
+    font-family: "Space Mono", monospace;
+    font-size: clamp(1rem, 2vw, 1.35rem);
+    font-weight: 900;
+    overflow-wrap: anywhere;
+}
+
+.interest-card-hint {
+    display: block;
+    padding: 3px 15px 15px;
+    color: #b33c00;
+    font-family: "Space Mono", monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+
+.interest-card-toggle:hover .interest-card-image {
+    filter: saturate(1.2) contrast(1.05);
+}
+
+.interest-card-toggle:hover .interest-card-heading {
+    color: #c94300;
+}
+
+.interest-card-toggle:focus-visible {
+    outline: 4px solid #ff4d00;
+    outline-offset: -7px;
+}
+
+.interest-card:has(.interest-card-toggle[aria-expanded="true"]) {
+    box-shadow: 6px 6px 0 #ffe66d;
+    transform: translate(-2px, -2px);
+}
+
+.interest-card-description {
+    padding: 16px;
+    border-top: 3px solid #19130e;
+    overflow-wrap: anywhere;
+    line-height: 1.7;
+}
+
+.interest-card-description[hidden] {
+    display: none;
+}
+
+.interest-card-description p:first-child {
+    margin-top: 0;
+}
+
+.interest-card-description p:last-of-type {
+    margin-bottom: 12px;
+}
+
+@media (max-width: 650px) {
+    .interest-card-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 18px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .lore-item.interest-card,
+    .interest-card-image {
+        transition: none;
+    }
+}
+
+
+
+
+
+
+
+/* ANOLE SAGA CARD VARIANT */
+.lore-item.anole-interest-card {
+    background: #ffe6c7;
+    box-shadow: 6px 6px 0 #ff4d00;
+}
+
+.anole-interest-card .interest-card-heading {
+    color: #b33c00;
+}
+
+.anole-interest-card .interest-card-hint {
+    color: #8c2c00;
+}
+
+.anole-interest-card .interest-card-image {
+    background: #ffe66d;
+}
+
+.anole-interest-card .anole-scoreboard {
+    margin: 16px 0;
+    padding: 14px;
+    border: 3px solid #19130e;
+    background: #000000;
+    box-shadow: 4px 4px 0 #ff7900;
+    font-family: "Space Mono", monospace;
+}
+
+.anole-scoreboard-heading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    font-weight: 900;
+}
+
+.anole-score {
+    color: #c94300;
+    font-size: 1.15rem;
+}
+
+.anole-progress-track {
+    width: 100%;
+    height: 18px;
+    margin-top: 12px;
+    overflow: hidden;
+    border: 2px solid #19130e;
+    background: #ffe6c7;
+}
+
+.anole-progress-fill {
+    height: 100%;
+    background: #ff7900;
+    transition: width 250ms ease;
+}
+
+.anole-remaining {
+    margin: 10px 0 0;
+    font-weight: 900;
+}
+
+.anole-footnote {
+    padding: 10px;
+    border-left: 4px solid #ff4d00;
+    background: #fff4dc;
+    font-family: "Space Mono", monospace;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
 @view-transition {
     navigation: auto;
 }
@@ -1027,5 +1212,16 @@ body.terminal-panic {
     to {
         opacity: 0;
         transform: translateY(-5px);
+    }
+}
+
+@keyframes pageEnter {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
